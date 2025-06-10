@@ -17,7 +17,7 @@ def overlay_image(background, overlay, x, y, overlay_size):
     overlay = cv2.resize(overlay, overlay_size)
 
     h, w, _ = overlay.shape
-    if x + w > background.shape[1] or y + h > background.shape[0]:
+    if x + w > background.shape[1] or y + h > background.shape[0] or x < 0 or y < 0:
         return background  # Don't draw outside bounds
 
     alpha_overlay = overlay[:, :, 3] / 255.0
